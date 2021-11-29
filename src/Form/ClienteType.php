@@ -22,7 +22,7 @@ class ClienteType extends AbstractType
             ->add('nombre',TextType::class)
             ->add('apellido',TextType::class)
             ->add('telefono',TextType::class,['required'=>false, 'empty_data'=>'00000000'])
-            ->add('lugar',EntityType::class, array('class'=>Lugar::class,'choice_label'=>'nombre','choice_value'=>'id','orderBy'=>"ASC"))
+            ->add('lugar',EntityType::class, array('class'=>Lugar::class,'choice_label'=>'nombre','choice_value'=>'id'))
             ->add('submit', SubmitType::class, array('label'=>'Crear','attr'=>['onclick'=>'funcion();']))
             
             //->add('user') contendra el id del usuario que lo creo
