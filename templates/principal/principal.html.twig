@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PrincipalController!{% endblock %}
+
+{% block body %}
+
+
+    <table class="table" align="center">        
+        <tbody>
+            <tr>                             
+                <td><a href="{{path('crearpedido')}}" class="btn-block btn-lg btn-info" style="font-size:60px;">Crear pedido</a></td>
+            </tr>
+            <tr>         
+                <td><a href="{{path('verpedido')}}" class="btn-block btn-lg btn-info" style="font-size:60px;">Ver mis pedidos</a></td>
+            </tr>
+            <tr>         
+                <td><a href="{{path('vercliente')}}" class="btn-block btn-lg btn-info" style="font-size:60px;">Ver mis clientes</a></td>
+            </tr>
+            <tr>         
+                <td><a href="{{path('imprimir')}}" class="btn-block btn-lg btn-success" style="font-size:60px;">Imprimir reporte</a></td>
+            </tr>
+            <tr>         
+                <td><a href="{{path('lugar_new')}}" class="btn-block btn-lg btn-info" style="font-size:60px;">Agregar lugare</a></td>
+            </tr>
+            <tr>         
+                <td><a href="{{path('producto_new')}}" class="btn-block btn-lg btn-info" style="font-size:60px;">Agregar productos</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+{% endblock %}

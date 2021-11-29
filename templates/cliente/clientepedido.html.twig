@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+
+
+
+
+
+<table class="table table-striped table-inverse table-responsive">
+    
+        <tbody>
+            <tr>   {{form_start(form)}}                       
+                <td style="font-size:50px;">{{form_label(form.producto)}}</td>
+                <td style="font-size:50px;">{{form_widget(form.producto, {'attr':{'class':''}} )}}</td>
+            </tr>
+            <tr>               
+                <td style="font-size:50px;">{{form_label(form.cantidad)}}</td>
+                <td style="font-size:50px;">{{form_widget(form.cantidad, {'attr':{'class':'','style':'width: 30%;'}} )}}</td>
+            </tr>
+            <tr>
+            <td style="font-size:50px;">{{form_label(form.fiado)}}</td><td style="font-size:40px;">{{form_widget(form.fiado, {'attr':{'class':'form-control','style':'width: 50%;'}} )}}</td>
+            </tr>
+            
+            <tr>               
+                <td style="font-size:45px;"><div class=" text text-danger text-lg-center " id="labelinfo"></div></td>
+                <td style="font-size:55px;">{{form_widget(form.submit)}}</td>
+                {{form_end(form)}}
+            </tr>
+        </tbody>
+</table>                
+{% endblock %}
+{% block javascripts %}
+
+<script>
+function funcion() {
+
+  document.getElementById('pedido_submit').style.visibility = 'hidden';
+  document.getElementById('labelinfo').innerHTML = "Procesando....";
+  alert('Se creara el pedido..');
+  return true;
+}
+</script>
+
+
+	
+{% endblock %}
+
+

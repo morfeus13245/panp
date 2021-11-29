@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Lugar{% endblock %}
+
+{% block body %}
+    <h1>Edit Lugar</h1>
+
+    {{ include('lugar/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('lugar_index') }}">back to list</a>
+
+    {{ include('lugar/_delete_form.html.twig') }}
+{% endblock %}
