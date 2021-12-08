@@ -23,7 +23,7 @@ class Pedido
     private $fecha;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="decimal", precision=5, scale=2)
      */
     private $cantidad;
 
@@ -60,12 +60,12 @@ class Pedido
         return $this;
     }
 
-    public function getCantidad(): ?int
+    public function getCantidad(): ?string
     {
         return $this->cantidad;
     }
 
-    public function setCantidad(int $cantidad): self
+    public function setCantidad(string $cantidad): self
     {
         $this->cantidad = $cantidad;
 
