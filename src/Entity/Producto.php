@@ -61,7 +61,7 @@ class Producto
         return $this->valor;
     }
 
-    public function setValor(string $valor): self
+    public function setValor(string $valor): self 
     {
         $this->valor = $valor;
 
