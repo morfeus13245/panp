@@ -10,7 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-
+use App\Entity\Cliente;
+use App\Form\ClienteEditaType;
 class ClienteController extends AbstractController
 {
     /**
@@ -103,6 +104,54 @@ class ClienteController extends AbstractController
         //print_r($idcliente);exit();
         $em=$this->getDoctrine()->getManager();
         $pedidoscliente = $em->getRepository('App:Pedido')->findpedidosbyCliente($idcliente,$this->getUser()->getId());
+        //print_r($lugar);exit();
+        return $this->render('cliente/pedidoscliente.html.twig', [
+            'pedidoscliente' => $pedidoscliente,
+
+        ]);
+    }
+
+    /**
+     * @Route("/editarcliente/{idcliente}", name="editarcliente")
+     */
+    public function editarcliente($idcliente, Request $request): Response
+    {//print_r($id);exit();
+        $em=$this->getDoctrine()->getManager();
+        $cliente= $em->getRepository('App:Cliente')->find($idcliente);
+        $form = $this->createForm(ClienteEditaType::class,$cliente);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            //print_r($cliente->getLugar()->getId());exit();
+            // $cliente->setUser($this->getUser());
+            
+            $em->persist($cliente);
+            $em->flush();
+           
+            //$lugar=$em->getRepository('App:Cliente')->lugarByIdCliente($cliente->getId());
+            ////flash mensaje cliente creado ahora cree su pedido
+            return $this->redirectToRoute('vercliente');
+
+        }
+
+        return $this->render('cliente/clienteedita.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+    /**
+     * @Route("/borrarpedido/{idpedido}", name="borrarpedido")
+     */
+    public function borrarpedido($idpedido){
+
+        $em =$this->getDoctrine()->getManager();
+        $pedido = $em->getRepository('App:Pedido')->find($idpedido);
+        //print_r($pedido->getCliente()->getId());exit();
+        //$pedidoscliente = $em->getRepository('App:Pedido')->findpedidosbyCliente($idcliente,$this->getUser()->getId());     
+        $em->remove($pedido);
+        $em->flush();
+
+        $pedidoscliente = $em->getRepository('App:Pedido')->findpedidosbyCliente($pedido->getCliente()->getId(),$this->getUser()->getId());
         //print_r($lugar);exit();
         return $this->render('cliente/pedidoscliente.html.twig', [
             'pedidoscliente' => $pedidoscliente,

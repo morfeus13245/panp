@@ -41,7 +41,8 @@
 					<td>{{cliente.nombre[:6]}}</td>
 					<td>{{cliente.apellido[:6]}}</td>
 					<td>{{cliente.lugarnombre[:6]}}</td>
-					<td><a href="{{ path('areacliente', {'idcliente':cliente.id, 'nombrecliente':cliente.nombre} )}}" class="badge badge-info" style="font-size:30px;">ver</a></td>
+					<td><a href="{{ path('areacliente', {'idcliente':cliente.id, 'nombrecliente':cliente.nombre} )}}" class="badge badge-info" style="font-size:30px;">Ver</a></td>
+					<td><a href="{{ path('editarcliente', {'idcliente':cliente.id} )}}" class="badge badge-warning" style="font-size:30px;">Edi</a></td>
 				</tr>
 
 			{% endfor %}			
