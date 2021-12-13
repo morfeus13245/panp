@@ -28,6 +28,7 @@
 					{% endif %}
 					</td>
 					<td><a href="{{ path('editarpedido', {'idpedido':pedidocliente.id} ) }}" class="btn btn-sm btn-warning" style="font-size:30px;">Edit</a></td>
+					<td><a href="{{ path('borrarpedido', {'idpedido':pedidocliente.id} ) }}" class="btn btn-sm btn-danger" style="font-size:30px;">Borr</a></td>
 					{% set total = total + (pedidocliente.valor * pedidocliente.cantidad) %}
 
 				</tr>
